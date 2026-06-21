@@ -3,35 +3,335 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
+  <title>Rajesh Narayan — Principal Engineer</title>
+  <meta name="description" content="Rajesh Narayan — Principal Engineer specializing in AI platforms, distributed systems, and data infrastructure. 18+ years building internet-scale data and AI platforms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #0d1117;
+      --bg-soft: #161b22;
+      --card: #1c2230;
+      --border: #2a3140;
+      --text: #e6edf3;
+      --muted: #9aa7b8;
+      --accent: #5b8cff;
+      --accent-soft: rgba(91, 140, 255, 0.12);
+      --max: 880px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
-    .card {
-      text-align: center;
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
     }
-    h1 {
-      font-size: 3rem;
-      margin: 0 0 0.5rem;
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    nav .brand { font-weight: 700; font-size: 1.05rem; }
+    nav .links { display: flex; gap: 22px; }
+    nav .links a { color: var(--muted); font-size: 0.92rem; font-weight: 500; }
+    nav .links a:hover { color: var(--text); text-decoration: none; }
+    @media (max-width: 600px) { nav .links { display: none; } }
+
+    /* Hero */
+    header.hero {
+      padding: 90px 0 70px;
+      background:
+        radial-gradient(1200px 400px at 50% -100px, rgba(91,140,255,0.15), transparent),
+        var(--bg);
+      border-bottom: 1px solid var(--border);
     }
-    p {
-      font-size: 1.1rem;
-      opacity: 0.85;
+    .hero .eyebrow {
+      color: var(--accent); font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
     }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+    .hero .title { font-size: clamp(1.05rem, 2.5vw, 1.35rem); color: var(--muted); margin-top: 12px; font-weight: 500; }
+    .hero p.lead { margin-top: 22px; max-width: 680px; color: var(--text); opacity: 0.92; font-size: 1.05rem; }
+    .hero .cta { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 20px; border-radius: 9px; font-weight: 600; font-size: 0.95rem;
+      border: 1px solid var(--border); transition: all 0.15s ease;
+    }
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn.primary:hover { background: #4a7bf0; text-decoration: none; }
+    .btn.ghost { color: var(--text); background: var(--card); }
+    .btn.ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* Sections */
+    section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+    section h2 {
+      font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em;
+      display: flex; align-items: center; gap: 12px;
+    }
+    section h2::before { content: ""; width: 4px; height: 24px; background: var(--accent); border-radius: 3px; }
+    section .sub { color: var(--muted); margin-bottom: 28px; font-size: 0.95rem; }
+
+    /* Experience */
+    .job { margin-bottom: 36px; }
+    .job:last-child { margin-bottom: 0; }
+    .job .row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px; }
+    .job .company { font-size: 1.15rem; font-weight: 700; }
+    .job .dates { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+    .job .role { color: var(--accent); font-weight: 500; font-size: 0.98rem; margin-bottom: 12px; }
+    .job ul { list-style: none; }
+    .job li { position: relative; padding-left: 22px; margin-bottom: 10px; color: var(--text); opacity: 0.9; }
+    .job li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+    .highlight {
+      background: var(--accent-soft); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent); border-radius: 8px; padding: 18px 20px; margin-top: 16px;
+    }
+    .highlight .tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .skill-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { background: var(--bg-soft); border: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; padding: 5px 11px; border-radius: 999px; }
+
+    /* Two-col cards (certs, edu, patents) */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+    .info-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+    .info-card h3 { font-size: 1.05rem; margin-bottom: 14px; }
+    .info-card ul { list-style: none; }
+    .info-card li { padding: 7px 0; color: var(--text); opacity: 0.9; border-bottom: 1px solid var(--border); }
+    .info-card li:last-child { border-bottom: none; }
+    .info-card .meta { color: var(--muted); font-size: 0.85rem; }
+
+    /* Contact */
+    .contact-grid { display: flex; gap: 14px; flex-wrap: wrap; }
+    .contact-card {
+      flex: 1 1 200px; background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px; transition: border-color 0.15s;
+    }
+    .contact-card:hover { border-color: var(--accent); }
+    .contact-card .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact-card .val { font-weight: 600; margin-top: 4px; word-break: break-word; }
+
+    footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Hello, World! 👋</h1>
-    <p>My first GitHub Page.</p>
-  </div>
+  <nav>
+    <div class="wrap">
+      <span class="brand">Rajesh Narayan</span>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Principal Engineer</div>
+      <h1>Rajesh Narayan</h1>
+      <div class="title">AI Platforms · Distributed Systems · Data Infrastructure</div>
+      <p class="lead">
+        Principal Engineer and technical leader with 18+ years building and scaling internet-scale
+        data and AI platforms that power personalization, advertising, identity, and customer
+        experience. I turn ambiguous problem spaces into durable, production-grade platforms adopted
+        across organizations.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/rajeshnarayan-profile" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/rnarayan1337" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <p style="max-width:720px; opacity:0.92;">
+        Deep expertise in distributed systems, real-time analytics, identity graphs, and GenAI
+        platforms, with sustained influence on architecture, standards, and technical direction at
+        enterprise scale. I've designed systems processing tens of billions of events per day,
+        driven 30+ ML models through production, and currently lead enterprise GenAI and
+        agent-orchestration platforms.
+      </p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <p class="sub">Building data and AI platforms at internet scale.</p>
+
+      <div class="job">
+        <div class="row">
+          <span class="company">Warner Bros. Discovery (HBO Max)</span>
+          <span class="dates">June 2018 – Present</span>
+        </div>
+        <div class="role">Principal Engineer / Technical Leader</div>
+        <ul>
+          <li>Principal architect for near real-time data and ML platforms powering advertising effectiveness, personalization, experimentation, and fraud detection across AVOD and streaming ecosystems.</li>
+          <li>Led architecture and strategy for a large-scale Identity Graph Platform enabling deterministic and probabilistic identity resolution across devices and channels — a foundational dependency for ads, personalization, and measurement.</li>
+          <li>Designed and scaled cloud-native ingestion and processing frameworks handling 27–30B daily events (14–16 TB/day) across mobile, browsing, location, and viewership data.</li>
+          <li>Drove the production lifecycle for 30+ ML models across churn prediction, pricing, fraud detection, segmentation, and engagement analytics.</li>
+          <li>Established architectural standards for reliability, scalability, observability, and data quality across streaming and batch workloads used by multiple product and analytics teams.</li>
+          <li>Mentored 5–6 engineers and interns while influencing roadmap and platform design decisions across partner organizations.</li>
+        </ul>
+
+        <div class="highlight">
+          <span class="tag">Flagship Initiative · 2024 – Present</span>
+          <strong>Enterprise GenAI Platform &amp; Agent Orchestration</strong>
+          <ul style="margin-top:12px;">
+            <li>Principal technical lead for enterprise GenAI platforms focused on conversational automation and customer support transformation.</li>
+            <li>Delivered two production GenAI systems: a data assistant (“Ask Data”) and a CX chatbot / agent-assist platform.</li>
+            <li>Reduced customer support agent handling time by 1–2 minutes per interaction through automated retrieval, reasoning, and guided workflows.</li>
+            <li>Architecting an MCP-based orchestration layer enabling secure, auditable agent-to-agent interactions between LLMs, enterprise services, and third-party systems.</li>
+            <li>Designed platform abstractions for model routing, tool invocation, memory/state management, and evaluation to prevent vendor lock-in.</li>
+            <li>Defined production guardrails, SLAs/SLOs, and governance standards in partnership with product, security, and compliance teams.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="row">
+          <span class="company">AT&amp;T</span>
+          <span class="dates">Aug 2005 – June 2018</span>
+        </div>
+        <div class="role">Principal / Lead Software Engineer</div>
+        <ul>
+          <li>Principal engineer in the Big Data Center of Excellence, leading architecture for enterprise AI/ML and advanced analytics initiatives.</li>
+          <li>Built real-time streaming analytics platforms supporting 30M+ mobile devices and ingestion frameworks processing multiple TB/day into enterprise data lakes.</li>
+          <li>Delivered business-readable datasets and platforms adopted across ad segmentation, network capacity planning, and location intelligence.</li>
+          <li>At AT&amp;T Foundry, led innovation from ideation to production and architected internet-scale microservices supporting 100M+ subscribers.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Core Skills</h2>
+      <p class="sub">Where I spend my time.</p>
+      <div class="skills">
+        <div class="skill-card">
+          <h3>AI &amp; Machine Learning Platforms</h3>
+          <div class="chips">
+            <span class="chip">Production ML lifecycle</span>
+            <span class="chip">GenAI systems</span>
+            <span class="chip">Agent orchestration</span>
+            <span class="chip">Evaluation frameworks</span>
+            <span class="chip">Feature platforms</span>
+            <span class="chip">Model deployment &amp; monitoring</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Data Platforms</h3>
+          <div class="chips">
+            <span class="chip">Real-time data pipelines</span>
+            <span class="chip">Streaming architectures</span>
+            <span class="chip">Batch processing</span>
+            <span class="chip">Identity graphs</span>
+            <span class="chip">Experimentation platforms</span>
+            <span class="chip">Large-scale analytics</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Distributed Systems</h3>
+          <div class="chips">
+            <span class="chip">High-scale microservices</span>
+            <span class="chip">Event-driven architectures</span>
+            <span class="chip">Reliability &amp; observability</span>
+            <span class="chip">Performance optimization</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Cloud &amp; Infrastructure</h3>
+          <div class="chips">
+            <span class="chip">AWS (EMR, Lambda, DynamoDB)</span>
+            <span class="chip">Azure</span>
+            <span class="chip">Platform architecture</span>
+            <span class="chip">Cost &amp; scalability optimization</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Technologies</h3>
+          <div class="chips">
+            <span class="chip">Java</span>
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Spark</span>
+            <span class="chip">Kafka</span>
+            <span class="chip">Snowflake</span>
+            <span class="chip">Databricks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="wrap">
+      <h2>Credentials</h2>
+      <p class="sub">Certifications, education, and intellectual property.</p>
+      <div class="grid2">
+        <div class="info-card">
+          <h3>Certifications</h3>
+          <ul>
+            <li>AWS Certified Solutions Architect – Associate</li>
+            <li>Deep Learning Specialization <span class="meta">· Coursera</span></li>
+            <li>Machine Learning Engineer Nanodegree <span class="meta">· Udacity</span></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Education</h3>
+          <ul>
+            <li>M.S., Finance / Strategy <span class="meta">· Georgia Institute of Technology</span></li>
+            <li>B.E., Computer / Information Sciences <span class="meta">· Bangalore University</span></li>
+          </ul>
+        </div>
+        <div class="info-card" style="grid-column: 1 / -1;">
+          <h3>Patents</h3>
+          <ul>
+            <li>Systems and methods for providing access to wireline communication equipment <span class="meta">· US 8,498,409</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Get in touch</h2>
+      <p class="sub">Open to conversations about AI platforms, distributed systems, and technical leadership.</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="https://github.com/rnarayan1337" target="_blank" rel="noopener">
+          <div class="label">GitHub</div>
+          <div class="val">@rnarayan1337</div>
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/rajeshnarayan-profile" target="_blank" rel="noopener">
+          <div class="label">LinkedIn</div>
+          <div class="val">in/rajeshnarayan-profile</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">© 2026 Rajesh Narayan · Principal Engineer</div>
+  </footer>
 </body>
 </html>
